@@ -20,4 +20,4 @@ Make an *.exe file:
 pyinstaller --onefile --windowed --add-data "icons;icons" --add-data "map;map" Suspended_map.py
 ```
 
-## Have fun and don't let people come into the complex!
+## Have fun and don't let people get into the complex!
