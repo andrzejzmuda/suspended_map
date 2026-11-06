@@ -1,5 +1,19 @@
+import os
+import sys
 import tkinter as tk
 from PIL import Image, ImageTk
+
+
+import os
+import sys
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class MapAndPawns:
     def __init__(self, root, map_path):
@@ -27,12 +41,12 @@ class MapAndPawns:
         else:
             self.canvas.create_rectangle(0, 0, self.width, self.height, fill="lightblue", outline="black")
         icon_files = [
-            "icons/iris.png",
-            "icons/poet.png",
-            "icons/whiz.png",
-            "icons/sensa.png",
-            "icons/auda.png",
-            "icons/waldo.png"
+            resource_path("icons/iris.png"),
+            resource_path("icons/poet.png"),
+            resource_path("icons/whiz.png"),
+            resource_path("icons/sensa.png"),
+            resource_path("icons/auda.png"),
+            resource_path("icons/waldo.png")
         ]
         self.pawns = []
         self.pawn_images = []
@@ -92,5 +106,8 @@ class MapAndPawns:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = MapAndPawns(root, "map/suspended_big.png")
+    app = MapAndPawns(
+        root,
+        resource_path("map/suspended_big.png")
+        )
     root.mainloop()
