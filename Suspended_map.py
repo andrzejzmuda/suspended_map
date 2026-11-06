@@ -4,31 +4,20 @@ import tkinter as tk
 from PIL import Image, ImageTk
 
 
-import os
-import sys
-
 def resource_path(relative_path):
     try:
         base_path = sys._MEIPASS
     except AttributeError:
         base_path = os.path.abspath(".")
-
     return os.path.join(base_path, relative_path)
+
 
 class MapAndPawns:
     def __init__(self, root, map_path):
         self.root = root
-        self.root.title("Suspended Map Assistant")
+        self.root.title("Suspended(1983) Map Assistant")
         try:
             map_image = Image.open(map_path)
-            # Adjust window size to match the map image
-            # scale = 1.5
-            # new_width = int(map_image.width * scale)
-            # new_height = int(map_image.height * scale)
-            # map_image = map_image.resize(
-            #     (new_width, new_height),
-            #     Image.LANCZOS
-            # )
             self.width, self.height = map_image.size
             self.background = ImageTk.PhotoImage(map_image)
         except FileNotFoundError:
@@ -57,13 +46,6 @@ class MapAndPawns:
             ]
         for i in range(6):
             x, y = positions[i]
-            # self.canvas.create_oval(
-            #     x - 24, y - 24,
-            #     x + 24, y + 24,
-            #     # fill="#001c54",
-            #     # outline="white",
-            #     # width=2
-            # )
             img = Image.open(icon_files[i])
             img = img.resize((32, 32), Image.LANCZOS)
             tk_img = ImageTk.PhotoImage(img)
